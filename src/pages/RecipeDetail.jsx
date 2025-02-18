@@ -14,7 +14,7 @@ const RecipeDetail = () => {
   useEffect(() => {
     const fetchRecipeDetails = async () => {
       try {
-        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=068d134bfa72449796edd5e551457e1e`);
+        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=a9b0abd3c9e6465696cc4ee6be7b6d7f`);
         setRecipe(response.data);
       } catch (error) {
         console.error(error);
