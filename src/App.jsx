@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <div className="">
+      <div className="mt-20">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recipe/:id" element={<RecipeDetail />} />

@@ -14,7 +14,7 @@ const RecipeDetail = () => {
   useEffect(() => {
     const fetchRecipeDetails = async () => {
       try {
-        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=cb482247826647cfbdd5fd68daa87eaf`);
+        const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=068d134bfa72449796edd5e551457e1e`);
         setRecipe(response.data);
       } catch (error) {
         console.error(error);
@@ -31,7 +31,7 @@ const RecipeDetail = () => {
   if (!recipe) return <div>Loading...</div>;
 
   return (
-    <div className="container mx-auto p-4 mt-6">
+    <div className="container mx-auto p-4 mt-24">
       <Grid container spacing={4}>
         <Grid item xs={12} sm={12} md={6}>
           <Card elevation={3} className="h-full shadow-lg flex flex-col">

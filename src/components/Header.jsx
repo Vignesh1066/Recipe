@@ -6,24 +6,21 @@ import logo from "../assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchActive, setIsSearchActive] = useState(false);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   const handleSearchClick = () => {
-    setIsSearchActive(true);
-  };
-
-  const closeSearchBar = () => {
-    setIsSearchActive(false);
+    setIsSearchVisible(true);
+    setIsMenuOpen(false);
   };
 
   return (
-    <header className="bg-gradient-to-b from-blue-800 via-blue-700 to-blue-700 p-4 text-white">
+    <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-b from-blue-800 via-blue-700 to-blue-700 p-4 text-white shadow-md">
       <div className="w-full mx-auto flex justify-between items-center">
-        <Link to="/" className="flex items-center h-full">
+        <Link to="/" className="flex items-center">
           <img src={logo} alt="Recipe App Logo" className="w-auto h-12 mr-2" />
           <span className="text-xl font-bold text-white italic">Tasty</span>
         </Link>
@@ -45,7 +42,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile view */}
+      {/* Mobile Menu */}
       <div
         className={`md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 transition-all duration-300 ease-in-out ${
           isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -90,20 +87,20 @@ const Header = () => {
               </Link>
             </li>
           </ul>
-
-          {isSearchActive && (
-            <div className="mt-4">
-              <SearchBar />
-              <button
-                onClick={closeSearchBar}
-                className="mt-4 text-red-500 block"
-              >
-                Close Search
-              </button>
-            </div>
-          )}
         </div>
       </div>
+
+      {isSearchVisible && (
+        <div className="w-full flex justify-center mt-3">
+          <SearchBar />
+          <button
+            onClick={() => setIsSearchVisible(false)}
+            className="ml-2 text-red-500 text-sm font-semibold"
+          >
+            ✖
+          </button>
+        </div>
+      )}
     </header>
   );
 };
